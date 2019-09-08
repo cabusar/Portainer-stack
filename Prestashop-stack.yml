@@ -17,7 +17,6 @@ services:
     image: prestashop/prestashop
     ports:
     - "80:80"
-    - "443:443"
     restart: always
 volumes:
     prestashop_db_data: {}
