@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  prestashop_db:
+    image: mysql:5.7
+    volumes:
+    - prestashop_db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ratatouille
+      MYSQL_DATABASE: prestashop
+      MYSQL_USER: prestashop
+      MYSQL_PASSWORD: prestashop
+  prestashop_front:
+    depends_on:
+    - prestashop_db
+    image: prestashop/prestashop
+    ports:
+    - "8080:80"
+    restart: always
+volumes:
+    prestashop_db_data: {}
