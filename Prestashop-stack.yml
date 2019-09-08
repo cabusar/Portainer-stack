@@ -15,8 +15,6 @@ services:
     depends_on:
     - prestashop_db
     image: prestashop/prestashop
-    ports:
-    - "80:80"
     restart: always
   reverse-proxy:
     image: traefik # The official Traefik docker image
