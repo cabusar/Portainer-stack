@@ -19,6 +19,8 @@ services:
     - prestashop_db
     image: prestashop/prestashop
     restart: always
+    volumes:
+    - prestashop_data:/var/www/html
     labels:
       - traefik.enable=true
       - traefik.backend=prestashop
@@ -41,4 +43,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 volumes:
     prestashop_db_data: {}
+    prestashop_data: {}
 
