@@ -7,7 +7,7 @@ services:
     - prestashop_db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ratatouille
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: prestashop
       MYSQL_USER: prestashop
       MYSQL_PASSWORD: prestashop
