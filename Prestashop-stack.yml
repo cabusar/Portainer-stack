@@ -20,10 +20,17 @@ services:
     image: prestashop/prestashop
     restart: always
     labels:
+      - traefik.enable=true
       - traefik.backend=prestashop
       - traefik.frontend.rule=Host:127.0.0.1
       - traefik.port=80
-
+      #- traefik.frontend.headers.SSLRedirect=true
+      #- traefik.frontend.headers.SSLHost=exemple.com
+      #- traefik.frontend.headers.STSSeconds=315360000
+      #- traefik.frontend.headers.STSIncludeSubdomains=true
+      #- traefik.frontend.headers.STSPreload=true
+      #- traefik.frontend.headers.frameDeny=true
+      #- traefik.frontend.headers.browserXSSFilter=true
   reverse-proxy:
     image: traefik # The official Traefik docker image
     command: --api --docker # Enables the web UI and tells Traefik to listen to docker
