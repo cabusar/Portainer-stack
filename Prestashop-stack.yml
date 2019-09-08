@@ -13,11 +13,17 @@ services:
       MYSQL_PASSWORD: prestashop
     labels:
       - traefik.enable=false
+
   prestashop_front:
     depends_on:
     - prestashop_db
     image: prestashop/prestashop
     restart: always
+    labels:
+      - traefik.backend=prestashop
+      - traefik.frontend.rule=Host:127.0.0.1
+      - traefik.port=80
+
   reverse-proxy:
     image: traefik # The official Traefik docker image
     command: --api --docker # Enables the web UI and tells Traefik to listen to docker
@@ -28,3 +34,4 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 volumes:
     prestashop_db_data: {}
+
